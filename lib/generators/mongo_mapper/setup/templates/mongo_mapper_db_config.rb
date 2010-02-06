@@ -1,0 +1,1 @@
+MongoMapper.database = "<%= database %>-#{Rails.env}"

@@ -1,0 +1,13 @@
+defaults: &defaults
+  host: localhost
+
+development:
+  <<: *defaults
+  database: <%= database %>
+
+production:
+  <<: *defaults
+  host: test
+  username: user
+  password: pass
+  database: <%= database %>

@@ -1,0 +1,13 @@
+Feb 5. 2010
+-----------
+* Added extra Generators module layer
+* Renamed database generators to setup
+* Dependency to thor-ext gem for extra Thor Actions functionality
+* add_gem functionality to add required gems to Gemfile
+
+Jan 28. 2010
+------------
+Applied Ajun's refactor patch
+Created USAGE instrunctions
+Renamed gem
+Updated Readme

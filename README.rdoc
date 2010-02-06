@@ -1,0 +1,38 @@
+= Mongo DB generators
+
+The Mongo DB Rails 3 generators includes the following generators:
+  
+== Mongoid  
+  
+* mongoid:setup       - setup Rails app to use Mongoid
+* mongoid:model       - generates a Mongoid model
+
+Example Use:
+
+Setup use of Mongoid
+
+  rails g mongoid:setup
+
+Create new model Person with name attribute
+
+  rails g mongoid:model person name:string
+
+== Mongo Mapper
+
+* mongo_mapper:setup  - setup Rails app to use Mongo Mapper
+* mongo_mapper:model  - generates a Mongo Mapper model
+
+Example Use:
+
+Setup use of Mongo Mapper
+
+  rails g mongoid:setup
+
+Create new Mongo Mapper model Person with name attribute
+
+  rails g mongoid:model person name:string
+
+= Notice
+
+This is currently a work in progress. Please feel free to join in the effort and fork this project and fix whatever bugs etc.
+
