@@ -4,7 +4,7 @@ require 'rake'
 begin
   require 'jeweler'
   Jeweler::Tasks.new do |gem|
-    gem.name = "mongo_db_model"
+    gem.name = "mongo_db_gen"
     gem.summary = %Q{Rails 3 generators for Mongo DB}
     gem.description = %Q{Rails 3 Mongo DB generators for MongoMapper and Mongoid}
     gem.email = "kmandrup@gmail.com"
@@ -44,7 +44,7 @@ Rake::RDocTask.new do |rdoc|
   version = File.exist?('VERSION') ? File.read('VERSION') : ""
 
   rdoc.rdoc_dir = 'rdoc'
-  rdoc.title = "mongo_db_model #{version}"
+  rdoc.title = "mongo_db_gen #{version}"
   rdoc.rdoc_files.include('README*')
   rdoc.rdoc_files.include('lib/**/*.rb')
 end

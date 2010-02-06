@@ -1,5 +1,6 @@
 Feb 5. 2010
 -----------
+* Renamed from mongo_db_model --> mongo_db_gen
 * Added extra Generators module layer
 * Renamed database generators to setup
 * Dependency to thor-ext gem for extra Thor Actions functionality

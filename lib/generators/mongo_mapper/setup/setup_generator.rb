@@ -1,15 +1,15 @@
-require 'thor-ext'
+require 'generators/mongo_db_base'
 
 module MongoMapper
   module Generators
-    class SetupGenerator < Rails::Generators::NamedBase
-      include Thor::Actions::Extensions
-      include MongoDatabase::Generators::Base      
-      
-      argument :database, :type => :string, :default => 'mongo_db_default'      
+    class SetupGenerator < MongoDatabase::Generators::Base
 
       def self.source_root
         @source_root ||= File.expand_path('../templates', __FILE__)
+      end
+
+      def self.banner
+        "#{$0} mongo_mapper:#{generator_name} #{self.arguments.map{ |a| a.usage }.join(' ')} [options]"
       end
 
       def create_files
