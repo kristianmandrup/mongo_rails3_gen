@@ -15,14 +15,14 @@ module MongoMapper
         "#{$0} mongo_mapper:#{generator_name} #{self.arguments.map{ |a| a.usage }.join(' ')} [options]"
       end
 
+      def configure_gems
+        add_gems %w{mongo_ext mongo mongo_mapper}
+      end
+
       def create_files
         template "mongo_mapper_db_config.rb" , "config/initializers/mongo_mapper_db_config.rb" 
       end
       
-      def configure_gems
-        add_gem "mongo_mapper"
-      end
-
     end
   end
 end

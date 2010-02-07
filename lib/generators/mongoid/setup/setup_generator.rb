@@ -16,7 +16,7 @@ module Mongoid
       end
 
       def configure_gems
-        add_gem "mongoid"
+        add_gems %w{mongo_ext mongo mongoid}
       end
 
       def create_files
