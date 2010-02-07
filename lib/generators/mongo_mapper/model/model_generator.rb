@@ -1,6 +1,7 @@
 module MongoMapper
   module Generators
     class ModelGenerator < Rails::Generators::NamedBase
+      
       argument :attributes, :type => :array, :default => [], :banner => "field:type field:type"  
 
       def self.source_root

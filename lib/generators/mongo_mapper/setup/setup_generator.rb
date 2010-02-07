@@ -2,7 +2,10 @@ require 'generators/mongo_db_base'
 
 module MongoMapper
   module Generators
-    class SetupGenerator < MongoDatabase::Generators::Base
+    class SetupGenerator < Rails::Generators::Base            
+      include MongoDatabase::Generators::Base
+
+      argument :database, :type => :string, :default => 'mongo_db_default'            
 
       def self.source_root
         @source_root ||= File.expand_path('../templates', __FILE__)
