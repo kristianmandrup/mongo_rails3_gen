@@ -1,9 +1,10 @@
-require 'generators/mongo_db_base'
+require 'thor-ext'
+require 'rails/generators/base'
 
 module Mongoid
   module Generators
     class SetupGenerator < Rails::Generators::Base            
-      include MongoDatabase::Generators::Base
+      include ThorExtensions
 
       argument :database, :type => :string, :default => 'mongo_db_default'            
 
@@ -16,6 +17,7 @@ module Mongoid
       end
 
       def configure_gems
+        cleanup_gemfile
         add_gems %w{mongo_ext mongo mongoid}
       end
 

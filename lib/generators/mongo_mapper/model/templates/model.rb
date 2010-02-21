@@ -1,4 +1,4 @@
-class <%= file_name %>
+class <%= class_name %>
   include MongoMapper::Document
 
   <% attributes.each do |field, type| %>
