@@ -10,14 +10,18 @@ module MongoMapper
       class_option :embedded, :type => :boolean, :aliases => "-E", :default => false,
                               :desc => "Use EmbeddedDocument for model"
 
+      attr_accessor :model_attributes
+
       def initialize(*args, &block)
         super
 
         @model_attributes = []
 
-        args_for_c_m.each do |arg|
+        attributes.each do |arg|
           if arg.include?(':')
             @model_attributes << Rails::Generators::GeneratedAttribute.new(*arg.split(':'))
+          else
+            @model_attributes << Rails::Generators::GeneratedAttribute.new(arg, "string")                        
           end
         end
 

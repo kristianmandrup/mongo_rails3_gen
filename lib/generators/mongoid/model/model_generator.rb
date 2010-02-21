@@ -5,13 +5,15 @@ module Mongoid
     class ModelGenerator < Rails::Generators::Base     
       argument :model_name, :type => :string, :required => true, :banner => 'ModelName'            
       argument :attributes, :type => :array, :default => [], :banner => "field:type field:type"  
+
+      attr_accessor :model_attributes
     
       def initialize(*args, &block)
         super
 
         @model_attributes = []
 
-        args_for_c_m.each do |arg|
+        attributes.each do |arg|
           if arg.include?(':')
             @model_attributes << Rails::Generators::GeneratedAttribute.new(*arg.split(':'))
           else
