@@ -47,6 +47,7 @@ Create new Mongo Mapper model Person with name attribute
   rails g mongoid:model person name:string
 
 Create Embedded document Address with attributes defaulting to string
+
   rails g mongoid:model address name street --embedded
 
 Notice
