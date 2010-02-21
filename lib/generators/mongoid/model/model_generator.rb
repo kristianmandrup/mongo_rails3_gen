@@ -6,6 +6,10 @@ module Mongoid
       argument :model_name, :type => :string, :required => true, :banner => 'ModelName'            
       argument :attributes, :type => :array, :default => [], :banner => "field:type field:type"  
 
+      class_option :inherit, :type => :string, :aliases => "-I",
+                              :desc => "Embed document by Inheriting"
+
+
       attr_accessor :model_attributes
     
       def initialize(*args, &block)

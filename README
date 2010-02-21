@@ -15,7 +15,20 @@ Setup use of Mongoid
 
 Create new model Person with name attribute
 
-  rails g mongoid:model person name:string
+  rails g mongoid:model person name:string                           
+  
+Create document Address with attributes defaulting to string  
+
+  rails g mongoid:model address name street                           
+
+Create Embedded document Browser as part of Canvas (Inheritance) 
+  rails g mongoid:model browser version:integer --inherit canvas                           
+
+Result:
+  class Browser < Canvas
+    field :version, :type => Integer
+  end
+
 
 Mongo Mapper
 ------------
@@ -32,6 +45,9 @@ Setup use of Mongo Mapper
 Create new Mongo Mapper model Person with name attribute
 
   rails g mongoid:model person name:string
+
+Create Embedded document Address with attributes defaulting to string
+  rails g mongoid:model address name street --embedded
 
 Notice
 ======
