@@ -1,8 +1,5 @@
 class <%= file_name.camelize %>
   include Mongoid::Document
-  
-  <% attributes.each do |field, type| %>
-    field <%= ":#{field}, :type => #{type.capitalize}" %>
-  <% end %>      
-  
+
+  <% model_attributes.map { |a| "field :#{a.name}, :type => #{a.type.capitalize}" }.join("\n") %>    
 end

@@ -5,20 +5,41 @@ module Mongoid
     class ModelGenerator < Rails::Generators::Base     
       argument :model_name, :type => :string, :required => true, :banner => 'ModelName'            
       argument :attributes, :type => :array, :default => [], :banner => "field:type field:type"  
-  
-      def self.source_root
-        @source_root ||= File.expand_path('../templates', __FILE__)
+    
+      def initialize(*args, &block)
+        super
+
+        @model_attributes = []
+
+        args_for_c_m.each do |arg|
+          if arg.include?(':')
+            @model_attributes << Rails::Generators::GeneratedAttribute.new(*arg.split(':'))
+          else
+            @model_attributes << Rails::Generators::GeneratedAttribute.new(arg, "string")            
+          end
+        end
+
+        @model_attributes.uniq!
+
+        if @model_attributes.empty?
+          if model_exists?
+            model_columns_for_attributes.each do |column|
+              @model_attributes << Rails::Generators::GeneratedAttribute.new(column.name.to_s, column.type.to_s)
+            end
+          else
+            @model_attributes << Rails::Generators::GeneratedAttribute.new('name', 'string')
+          end
+        end
       end
-  
-      def self.banner
-        "#{$0} mongoid:#{generator_name} #{self.arguments.map{ |a| a.usage }.join(' ')} [options]"
-      end
-  
+
       def create_model_file
         template 'model.rb', "app/models/#{singular_name}.rb"        
       end
-  
-      no_tasks do
+
+      no_tasks do 
+        def model_exists?
+          File.exist? destination_path("app/models/#{singular_name}.rb")
+        end
         def singular_name
           model_name.underscore
         end
@@ -34,7 +55,16 @@ module Mongoid
         def plural_class_name
           plural_name.camelize
         end
+      end   
+      
+      def self.source_root
+        @source_root ||= File.expand_path('../templates', __FILE__)
       end
+  
+      def self.banner
+        "#{$0} mongoid:#{generator_name} #{self.arguments.map{ |a| a.usage }.join(' ')} [options]"
+      end
+      
     end
   end
 end

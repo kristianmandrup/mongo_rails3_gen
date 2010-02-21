@@ -1,7 +1,5 @@
 class <%= class_name %>
   include MongoMapper::Document
 
-  <% attributes.each do |field, type| %>
-    key <%= ":#{field}, #{type.capitalize}" %>
-  <% end %>      
+  <% model_attributes.map { |a| "key :#{a.name}, #{a.type.capitalize}" }.join("\n") %>
 end
