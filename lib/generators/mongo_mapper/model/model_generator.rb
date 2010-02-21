@@ -19,7 +19,7 @@ module MongoMapper
       end
 
       def create_model_file
-        template 'model.rb', File.join('app/models', class_path, "#{file_name}.rb")
+        template 'model.rb', "app/models/#{singular_name}.rb"        
       end
 
       no_tasks do
