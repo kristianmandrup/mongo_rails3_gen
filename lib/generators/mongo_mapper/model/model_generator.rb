@@ -2,7 +2,10 @@ module MongoMapper
   module Generators
     class ModelGenerator < Rails::Generators::NamedBase
       
-      argument :attributes, :type => :array, :default => [], :banner => "field:type field:type"  
+      argument :attributes, :type => :array, :default => [], :banner => "field:type field:type"
+
+      class_option :embedded, :type => :boolean, :aliases => "-E", :default => false,
+                              :desc => "Use EmbeddedDocument for model"
 
       def self.source_root
         @source_root ||= File.expand_path('../templates', __FILE__)
