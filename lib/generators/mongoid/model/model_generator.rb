@@ -9,15 +9,26 @@ module Mongoid
       class_option :inherit, :type => :string, :aliases => "-I",
                               :desc => "Embed document by Inheriting"
 
+      class_option :version, :type => :boolean, :aliases => "-V", :default => false
+                              :desc => "Add versioning"
 
-      attr_accessor :model_attributes
+      class_option :timestamps, :type => :boolean, :aliases => "-T", :default => true
+                              :desc => "Add timstamps"
+                             
+      attr_accessor :model_attributes, :model_indexes
     
       def initialize(*args, &block)
         super
 
-        @model_attributes = []
+        @model_attributes = []          
+        @model_indexes = []
 
         attributes.each do |arg|
+          if arg.include?('#')  
+            arg.gsub! /#.*$/, ''            
+            @model_indexes << arg.split(':').first
+          end
+          
           if arg.include?(':')
             @model_attributes << Rails::Generators::GeneratedAttribute.new(*arg.split(':'))
           else

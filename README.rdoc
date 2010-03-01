@@ -27,16 +27,60 @@ Create new model Person with name attribute
 
   rails g mongoid:model person name:string
 
+=>
+  class Person 
+    field :name, :type => String    
+  end
+
+
 Create document Address with attributes defaulting to string  
 
-  rails g mongoid:model address name street                           
+  rails g mongoid:model Address name street                           
 
-Create Embedded document Browser as part of Canvas (Inheritance) 
-  rails g mongoid:model browser version:integer --inherit canvas                           
+=>
+  class Address 
+    include Mongoid::Timestamps    
+    field :name, :type => String    
+    field :street, :type => String    
+  end
 
-Result:
-  class Browser < Canvas
-    field :version, :type => Integer
+
+Add Timestamps using -T (true by default)
+  rails g mongoid:model person name:string -T
+
+=>
+  class Person < Being
+    include Mongoid::Timestamps    
+    field :name, :type => String
+  end
+
+
+Add Versioning using -V (false by default)
+  rails g mongoid:model person name:string -V
+
+=>
+  class Person < Being
+    include Mongoid::Versioning    
+    field :name, :type => String
+  end
+
+
+Index select attributes by postfixing name with #
+  rails g mongoid:model person name:string# -V
+
+=>
+  class Person < Being
+    field :person, :type => String
+    index :name, :unique => true      
+  end
+
+
+Create Embedded document Browser as a kind of Being (Inheritance) 
+  rails g mongoid:model person name:string --inherit canvas                           
+
+=>
+  class Person < Being
+    field :person, :type => String
   end
 
 == Mongo Mapper
