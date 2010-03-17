@@ -2,12 +2,16 @@
 
 The Mongo DB Rails 3 generators includes generators for both Mongo Mapper and Mongoid.
 
-These generators have recently been integrated into my forks of mongomapper and mongoid. 
-Please let me know if they work there as well and if you have ideas for further improvements. 
+## Mongoid and Mongomapper now with Rails 3 generators ##
 
-I also have a rails_model_maker in the works, to let a rails model graph be defined in yaml and all the rails model files generated for
-the model framework of choice (ActiveRecord, Datamapper, MongoMapper, Mongoid etc.). Feel free to assist in the effort to finish the rails_model_maker project
-and add "plugins" for whichever model framework you like. 
+These generators have now been integrated into my forks of mongomapper and mongoid. 
+Please let me know if they work there just as well and any ideas for further improvements. 
+
+## Rails model maker ##
+
+I also have a rails_model_maker project in the works on my github account. This allows a rails model "graph" be defined in yaml and all the rails model files can be generated for the model framework of choice (ActiveRecord, Datamapper, MongoMapper, Mongoid etc.). 
+
+Please assist in the effort to finish the rails_model_maker project and add "plugins" for whichever model framework you like. 
 
 # Installation ##
 
