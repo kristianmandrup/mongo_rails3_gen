@@ -13,17 +13,17 @@ and add "plugins" for whichever model framework you like.
 
 Add the following to your Gemfile in your Rails 3 project:
 
-The best fork to use changes regularly...
+Note: Always check if there is a more recent or better fork to use...
 
 <pre>
 gem 'mongo_ext'
-gem 'mongoid'
-gem "mongo_mapper", :git => 'http://github.com/technoweenie/mongomapper.git'
+gem 'mongoid', :git => 'http://github.com/kristianmandrup/mongoid.git'
+gem "mongo_mapper", :git => 'http://github.com/kristianmandrup/mongomapper.git'
 
 $ bundle install
 </pre>
   
-## Mongoid ## 
+## Mongoid ##
 
 Includes the following generators
   
